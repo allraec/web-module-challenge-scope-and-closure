@@ -114,7 +114,7 @@ Final Score: 6 - 10 */
 function scoreboard(inningFunc, innings) {
   let home = [0];
   let away = [0];
-  let score = [""];
+  let score = [];
   for(i = 1; i <= innings; i++){
     let ordinalInd;
     if(i % 10 == 1){
@@ -132,11 +132,11 @@ function scoreboard(inningFunc, innings) {
 
     home.push(home[i-1]+inningFunc());
     away.push(away[i-1]+inningFunc());
-    console.log(`${i}${ordinalInd} inning: ${home[i]} - ${away[i]}`);
+    score.push(`${i}${ordinalInd} inning: ${home[i]} - ${away[i]}`);
   }
-  console.log(home);
-  console.log(away);
+  score.push(`Final Score: ${home[score.length]} - ${away[score.length]}`);
+  return score;
 }
 
-scoreboard(inning, 20);
+console.log(scoreboard(inning, 9));
 
