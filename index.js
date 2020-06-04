@@ -88,7 +88,7 @@ function finalScore(inningFunc, innings){
   return score
 }
 
-// console.log(finalScore(inning,9));
+console.log(finalScore(inning,9));
 
 /* Task 4: 
 
@@ -132,7 +132,7 @@ function scoreboard(inningFunc, innings) {
 
     home.push(home[i-1]+inningFunc());
     away.push(away[i-1]+inningFunc());
-    score.push(`${i}${ordinalInd} inning: ${home[i]} - ${away[i]}`);
+    score.push(`${i}${ordinalInd} Inning: ${home[i]} - ${away[i]}`);
   }
   score.push(`Final Score: ${home[score.length]} - ${away[score.length]}`);
   return score;
