@@ -28,6 +28,7 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * + Counter 1 assigns a function that returns a function that executes a counter.
  * 2. Which of the two uses a closure? How can you tell?
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
@@ -56,11 +57,10 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random()*3);
 }
+
 
 /* Task 3: finalScore()
 
@@ -76,11 +76,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inningFunc, innings){
+  let score = {
+    home:0,
+    away:0
+  }
+  for(i=0; i<innings; i++){
+    score.home += inningFunc();
+    score.away += inningFunc();
+  }
+  return score
 }
+
+// console.log(finalScore(inning,9));
 
 /* Task 4: 
 
@@ -103,8 +111,32 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inningFunc, innings) {
+  let home = [0];
+  let away = [0];
+  let score = [];
+  for(i = 1; i <= innings; i++){
+    let ordinalInd;
+    if(innings % 10 == 1){
+      ordinalInd = "st";
+    }
+    else if(innings % 10 == 2){
+      ordinalInd = "nd";
+    }
+    else if(innings % 10 ==3){
+      ordinalInd = "rd";
+    }
+    else{
+      ordinalInd = "th";
+    }
+
+    home.push(home[i-1]+inningFunc());
+    away.push(away[i-1]+inningFunc());
+    console.log(i);
+  }
+  console.log(home);
+  console.log(away);
 }
 
+scoreboard(inning, 9);
 
