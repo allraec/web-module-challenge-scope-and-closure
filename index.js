@@ -114,16 +114,16 @@ Final Score: 6 - 10 */
 function scoreboard(inningFunc, innings) {
   let home = [0];
   let away = [0];
-  let score = [];
+  let score = [""];
   for(i = 1; i <= innings; i++){
     let ordinalInd;
-    if(innings % 10 == 1){
+    if(i % 10 == 1){
       ordinalInd = "st";
     }
-    else if(innings % 10 == 2){
+    else if(i % 10 == 2){
       ordinalInd = "nd";
     }
-    else if(innings % 10 ==3){
+    else if(i % 10 ==3){
       ordinalInd = "rd";
     }
     else{
@@ -132,11 +132,11 @@ function scoreboard(inningFunc, innings) {
 
     home.push(home[i-1]+inningFunc());
     away.push(away[i-1]+inningFunc());
-    console.log(i);
+    console.log(`${i}${ordinalInd} inning: ${home[i]} - ${away[i]}`);
   }
   console.log(home);
   console.log(away);
 }
 
-scoreboard(inning, 9);
+scoreboard(inning, 20);
 
