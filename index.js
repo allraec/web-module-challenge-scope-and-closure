@@ -129,7 +129,6 @@ function scoreboard(inningFunc, innings) {
     else{
       ordinalInd = "th";
     }
-
     home.push(home[i-1]+inningFunc());
     away.push(away[i-1]+inningFunc());
     score.push(`${i}${ordinalInd} Inning: ${home[i]} - ${away[i]}`);
