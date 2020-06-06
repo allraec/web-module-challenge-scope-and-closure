@@ -28,9 +28,18 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * + Counter 1 assigns a function that returns a function that executes a counter.
+ * + Counter 2 is a counter function that stores the added numbers in a global variable.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * Counter 1 because it's a function that returns a function that acts as a storage when invoked.
+ * 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 
+ * Counter 1 would be preferable if you need to keep your counter private since they cannot be changed inside.
+ * 
+ * Counter 2 is a simple counter if you dont have any problem with the counter being changed.
  *
 */
 
@@ -51,16 +60,14 @@ function counter2() {
   return count++;
 }
 
-
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random()*3);
 }
+
 
 /* Task 3: finalScore()
 
@@ -76,11 +83,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inningFunc, innings){
+  let score = {
+    home:0,
+    away:0
+  }
+  for(i=0; i<innings; i++){
+    score.home += inningFunc();
+    score.away += inningFunc();
+  }
+  return score
 }
+
+console.log(finalScore(inning,9));
 
 /* Task 4: 
 
@@ -103,8 +118,44 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inningFunc, innings) {
+  let home = [0];
+  let away = [0];
+  let score = [];
+  for(i = 1; i <= innings; i++){
+    let ordinalInd;
+    if(i % 10 == 1){
+      ordinalInd = "st";
+    }else if(i % 10 == 2){
+      ordinalInd = "nd";
+    }else if(i % 10 ==3){
+      ordinalInd = "rd";
+    }else{
+      ordinalInd = "th";
+    }
+    home.push(home[i-1]+inningFunc());
+    away.push(away[i-1]+inningFunc());
+    score.push(`${i}${ordinalInd} Inning: ${home[i]} - ${away[i]}`);
+  }
+  score.push(`Final Score: ${home[score.length]} - ${away[score.length]}`);
+  return score;
 }
 
+console.log(scoreboard(inning, 9));
 
+
+function personalDice(name){
+  return function(){
+      // generate random number between 1 and 6
+    const newRoll = Math.floor(Math.random() * 6);
+    console.log(`${name} rolled a ${newRoll}`)
+  }
+}
+
+const dansRoll = personalDice("Dan");
+
+const zoesRoll = personalDice("Zoe");
+
+
+dansRoll();
+dansRoll();
