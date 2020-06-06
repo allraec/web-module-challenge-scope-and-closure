@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+---------------------------------------------------------------------------------------------------------
++ Closures give access to an outer function scope through an inner function created at function creation.
+---------------------------------------------------------------------------------------------------------
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,22 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+--------------------------------------------------------
++ It's in the personalDice function. Because a function is created inside a a creation of a function.
+-----------------------------------------------------------------------------------------------------
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+
+-------------------------------------------------------------------------------------------------------------------------------------
++ The name is always the same, because after the function is created, a new random number is generated, so the newRoll always changes everytime the dansRoll is invoked.
+-------------------------------------------------------------------------------------------------------------------------------------
+
+c. What is the lexical scope of `newRoll`?
+
+------------------------------------------------------------------------------------------------------------
++ The lexical scope only pertains to the anonymous function created inside personalDice function only there.
+------------------------------------------------------------------------------------------------------------
 
 ### Task 3 - Stretch Goals
 
