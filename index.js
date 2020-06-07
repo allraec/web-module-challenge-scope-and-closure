@@ -95,7 +95,10 @@ function finalScore(inningFunc, innings){
   return score
 }
 
+console.log("*****TASK 4*****");
+console.log("");
 console.log(finalScore(inning,9));
+console.log("");
 
 /* Task 4: 
 
@@ -141,21 +144,7 @@ function scoreboard(inningFunc, innings) {
   return score;
 }
 
+console.log("*****TASK 5*****");
+console.log("");
+
 console.log(scoreboard(inning, 9));
-
-
-function personalDice(name){
-  return function(){
-      // generate random number between 1 and 6
-    const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`)
-  }
-}
-
-const dansRoll = personalDice("Dan");
-
-const zoesRoll = personalDice("Zoe");
-
-
-dansRoll();
-dansRoll();
